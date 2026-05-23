@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N'AUGUSTE - PROMO</title>
+
+<style>
+
+/* ========================= */
+/* BODY */
+/* ========================= */
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#111;
+    color:white;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+nav{
+    background:#000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    flex-wrap:wrap;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    padding:0;
+}
+
+nav ul li{
+    margin:0 10px;
+}
+
+nav a{
+    color:red;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a.active{
+    border-bottom:3px solid red;
+}
+
+.logo img{
+    width:220px;
+}
+
+.logos img{
+    width:120px;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:45px;
+    color:red;
+}
+
+.hero p{
+    color:#ccc;
+    margin-top:10px;
+}
+
+.play-btn{
+    margin-top:25px;
+    padding:15px 30px;
+    border:none;
+    background:red;
+    color:white;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.play-btn:hover{
+    background:#ff2d2d;
+    transform:scale(1.05);
+}
+
+/* ========================= */
+/* POPUP */
+/* ========================= */
+
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.popup-content{
+    background:#1b1b1b;
+    width:90%;
+    max-width:450px;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 0 25px red;
+}
+
+.popup-content h2{
+    color:red;
+}
+
+.answer-btn{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:none;
+    background:#333;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.answer-btn:hover{
+    background:red;
+}
+
+.result{
+    margin-top:20px;
+}
+
+.result img{
+    width:180px;
+    margin-top:15px;
+    border-radius:10px;
+}
+
+/* ========================= */
+/* PRODUITS */
+/* ========================= */
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    padding:40px 20px;
+}
+
+.card{
+    width:300px;
+    background:#1b1b1b;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+    transition:0.4s;
+    border:2px solid red;
+    box-shadow:
+    0 0 10px red,
+    0 0 20px rgba(255,0,0,0.5),
+    0 0 40px rgba(255,0,0,0.3);
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+.card::before{
+    content:"PROMO";
+    position:absolute;
+    top:10px;
+    left:-35px;
+    background:red;
+    color:white;
+    padding:8px 40px;
+    transform:rotate(-45deg);
+    font-size:13px;
+    font-weight:bold;
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.content{
+    padding:15px;
+}
+
+.content h3{
+    margin-top:0;
+    color:white;
+}
+
+.resume{
+    color:#ccc;
+    line-height:1.5;
+    font-size:14px;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:#888;
+    margin-top:10px;
+}
+
+.new-price{
+    color:#00ff66;
+    font-size:24px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.order-btn{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:none;
+    background:#25D366;
+    color:white;
+    font-weight:bold;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.order-btn:hover{
+    background:#1eb955;
+}
+
+/* ========================= */
+/* WHATSAPP FLOAT */
+/* ========================= */
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    width:60px;
+    height:60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:28px;
+    z-index:9999;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav ul{
+        flex-direction:column;
+    }
+
+    nav ul li{
+        margin:10px 0;
+    }
+
+    .card{
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
+
+<nav>
+
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+    <ul>
+        <li><a href="accueil.html">ACCUEIL</a></li>
+        <li><a href="promo.html" class="active">ESPACE PROMO</a></li>
+        <li><a href="boutique.html">BOUTIQUE</a></li>
+        <li><a href="kamasutra.html">KAMASUTRA</a></li>
+    </ul>
+
+    <div class="logos">
+        <img src="logo1.png">
+    </div>
+
+</nav>
+
+<!-- ========================= -->
+<!-- HERO -->
+<!-- ========================= -->
+
+<section class="hero">
+
+    <h1>ESPACE PROMOTION 🔥</h1>
+
+    <p>
+        Jouez et profitez de nos offres promotionnelles exclusives.
+    </p>
+
+    <button class="play-btn" id="openPopup">
+        JOUER A QUESTION-REPONSE
+    </button>
+
+</section>
+
+<!-- ========================= -->
+<!-- POPUP -->
+<!-- ========================= -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-content">
+
+        <h2>QUESTION BONUS 🎁</h2>
+
+        <p>
+            Quel produit est conçu pour améliorer votre énergie ?
+        </p>
+
+        <button class="answer-btn">ULTRA GEL</button>
+        <button class="answer-btn correct">POWER MAX</button>
+        <button class="answer-btn">MASSAGE OIL</button>
+
+        <div class="result" id="result"></div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- PRODUITS PROMO -->
+<!-- ========================= -->
+
+<div class="products">
+
+    <!-- CARD 1 -->
+    <div class="card">
+
+        <img src="promo1.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">POWER MAX</h3>
+
+            <p class="resume">
+                Complément premium pour booster votre énergie et votre endurance.
+            </p>
+
+            <div class="old-price">
+                15 000 FCFA
+            </div>
+
+            <div class="new-price">
+                10 000 FCFA
+            </div>
+
+            <button class="order-btn">
+                Commander
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+
+        <img src="promo2.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">ROYAL HONEY</h3>
+
+            <p class="resume">
+                Miel énergétique naturel pour retrouver votre vitalité.
+            </p>
+
+            <div class="old-price">
+                8 000 FCFA
+            </div>
+
+            <div class="new-price">
+                5 000 FCFA
+            </div>
+
+            <button class="order-btn">
+                Commander
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+
+        <img src="promo3.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">LOVE BOOST</h3>
+
+            <p class="resume">
+                Booster naturel conçu pour améliorer votre confiance.
+            </p>
+
+            <div class="old-price">
+                12 000 FCFA
+            </div>
+
+            <div class="new-price">
+                7 500 FCFA
+            </div>
+
+            <button class="order-btn">
+                Commander
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- WHATSAPP FLOAT -->
+<!-- ========================= -->
+
+<a href="https://wa.me/22893875723" class="whatsapp">
+💬
+</a>
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer>
+
+<a href="mentions-legales.html">Mentions légales</a> |
+<a href="cgu.html">Conditions d'utilisation</a> |
+<a href="confidentialite.html">Politique de confidentialité</a>
+
+</footer>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+
+/* ========================= */
+/* POPUP */
+/* ========================= */
+
+const popup = document.getElementById("popup");
+
+document.getElementById("openPopup")
+.addEventListener("click", () => {
+
+    popup.style.display = "flex";
+
+});
+
+const result = document.getElementById("result");
+
+const answers = document.querySelectorAll(".answer-btn");
+
+answers.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        if(button.classList.contains("correct")){
+
+            result.innerHTML = `
+            <h3 style="color:#00ff66;">
+            Félicitations 🎉
+            </h3>
+
+            <img src="cadeau.jpg">
+
+            <p>
+            Vous avez gagné une offre spéciale !
+            </p>
+            `;
+
+        }else{
+
+            result.innerHTML = `
+            <h3 style="color:red;">
+            Désolé 😢
+            </h3>
+
+            <p>
+            À bientôt pour une nouvelle chance.
+            </p>
+            `;
+
+        }
+
+    });
+
+});
+
+/* ========================= */
+/* WHATSAPP AUTO */
+/* ========================= */
+
+const orderButtons =
+document.querySelectorAll(".order-btn");
+
+orderButtons.forEach(button => {
+
+    button.addEventListener("click", function(){
+
+        const card =
+        this.closest(".card");
+
+        const title =
+        card.querySelector(".product-title")
+        .innerText;
+
+        const message =
+        "Bonjour, je veux le produit : "
+        + title;
+
+        const whatsappURL =
+        "https://wa.me/22893875723?text="
+        + encodeURIComponent(message);
+
+        window.open(whatsappURL, "_blank");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

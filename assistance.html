@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N'AUGUSTE</title>
+
+<style>
+
+body { margin: 0; font-family: Arial; }
+
+/* CHATBOT FLOAT */
+#chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  background: #111;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  overflow: hidden;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+/* header */
+#chatHeader {
+  background: #d32f2f;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* body */
+#chatBody {
+  padding: 10px;
+}
+
+/* fermé */
+#chatbot.closed #chatBody {
+  display: none;
+}
+
+/* message */
+.chatBubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* image utilisateur */
+#chatUser {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* texte */
+.chatText {
+  background: #222;
+  padding: 8px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+/* bouton */
+#chatBtn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background: #09db56;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* typing */
+#typing {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 5px;
+  display: none;
+}
+.dot {
+  animation: blink 1.4s infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+/* NAVBAR */
+nav {
+  background: #0b0b0b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+}
+nav a.active {
+  color: rgb(250, 4, 4);
+  border-bottom: 3px solid rgb(252, 2, 2);
+}
+
+.logo { font-weight: bold; font-size: 20px; }
+
+nav ul { display: flex; list-style: none; }
+
+nav ul li { margin: 0 10px; }
+
+nav a { color: rgb(252, 3, 3); text-decoration: none; font-weight: bold; cursor: pointer; }
+
+/* LOGOS */
+.logo img{
+    width:220px;
+}
+
+.logos img{
+    width:120px;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#09db56bf;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+animation:pulse 1.5s infinite;
+z-index: 9999;
+}
+
+/* description cachée */
+.desc { display: none; margin-top: 10px; font-size: 14px; }
+
+.toggle {
+  background: #0f9b0f;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* CONTACT */
+.contact {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+
+/* UNIQUEMENT formulaire assistance */
+#assistance input,
+#assistance button {
+  padding: 10px;
+  width: 250px;
+  max-width: 90%;
+}
+
+/* bouton du formulaire seulement */
+#assistance button {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* FOOTER ACCUEIL */
+.footer-home {
+  background: black;
+  color: rgb(225, 203, 203);
+  text-align: center;
+  padding: 30px;
+}
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+}
+
+/* animation apparition */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(56,239,125,0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(56,239,125,0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(56,239,125,0);
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 5px 0;
+  }
+
+  
+  .logo img {
+    width: 180px;
+  }
+
+  /* CHATBOT */
+  #chatbot {
+    width: 90%;
+    right: 5%;
+    bottom: 70px;
+  }
+
+  #chatHeader {
+    font-size: 14px;
+  }
+
+  #chatBtn {
+    font-size: 14px;
+  }
+
+  /* FORM */
+  #assistance input,
+  #assistance button {
+    width: 95%;
+  }
+
+  /* WHATSAPP */
+  .whatsapp {
+    bottom: 10px;
+    right: 10px;
+    font-size: 18px;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+<!-- CHATBOT FLOAT -->
+<div id="chatbot">
+
+  <div id="chatHeader" onclick="toggleChat()">
+    💬 Communautés <span id="chatToggleIcon">▼</span>
+  </div>
+
+  <div id="chatBody">
+    <div id="typing">En train d’écrire...</div>
+    <p id="chatText">...</p>
+
+    <button onclick="openChatWhatsApp()" id="chatBtn">
+      Rejoindre sur WhatsApp
+    </button>
+  </div>
+
+</div>
+  
+
+<!-- MENU -->
+<nav>
+  <div class="logo">
+<img src="logo.png">
+</div>
+
+  <ul>
+  <li><a href="accueil.html" >ACCUEIL</a></li>
+  <li><a href="promo.html">ESPACE PROMO</a></li>
+  <li><a href="assistance.html" class="active">ASSISTANCE</a></li>
+
+</ul>
+
+  <div class="logos">
+    <img src="logo1.png">
+    
+  </div>
+</nav>
+
+
+<!-- ASSISTANCE -->
+<div id="assistance" class="page contact">
+
+<h2>Nous Contactez</h2>
+
+<form onsubmit="sendWhatsApp(event)">
+  <input type="text" id="symptomes" placeholder="Dites nous vos troubles sexuels" required><br><br>
+  <input type="text" id="duree" placeholder="depuis quand ?" required><br><br>
+  <input type="text" id="traitement" placeholder="Marié ou célibataire"><br><br>
+
+  <button type="submit">Soumettre</button>
+</form>
+
+</div>
+
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/22893875723" class="whatsapp">💬</a>
+
+<footer style="text-align:center; padding:20px; font-size:14px;background: black;color: white;">
+  <a href="mentions-legales.html">Mentions légales</a> |
+  <a href="cgu.html">Conditions d'utilisation</a> |
+  <a href="confidentialite.html">Politique de confidentialité</a>
+</footer>
+
+<script>
+
+/* Soumettre whatsapp */
+function sendWhatsApp(e){
+  e.preventDefault();
+
+  let s = document.getElementById("symptomes").value;
+  let d = document.getElementById("duree").value;
+  let t = document.getElementById("traitement").value;
+
+  let msg = `Bonjour, j'ai besoin d'assistance :
+Symptômes: ${s}
+Durée: ${d}
+Traitement: ${t}`;
+
+  let url = "https://wa.me/22893875723?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
+}
+
+/* ANIMATION SCROLL */
+let elements = document.querySelectorAll('.fade-in');
+
+window.addEventListener('scroll', ()=>{
+  elements.forEach(el=>{
+    let pos = el.getBoundingClientRect().top;
+    if(pos < window.innerHeight - 50){
+      el.classList.add('show');
+    }
+  });
+});
+
+/* MESSAGES CHATBOT (7 produits) */
+/* ===== CHATBOT DATA ===== */
+const chatbotMessages = [
+  {
+    text: "Salut 👋 je baise bien depuis 1 semaine, je suis en forme !",
+    img: "user1.jpg"
+  },
+  {
+    text: "Salut, moi j'ai fait 9 min, je demande un match revanche looooo",
+    img: "user2.jpg"
+  },
+  {
+    text: "Ma femme ne me comprend plus, je lui dis de faire position sciseau",
+    img: "user3.jpg"
+  },
+  {
+    text: "Salut, vos filles mouillent bien",
+    img: "user4.jpg"
+  },
+  {
+    text: "Pourquoi je bande vite vite sur ce site",
+    img: "user5.jpg"
+  },
+  {
+    text: "Venez me faire une pipe, le docteur dit que c'est bon",
+    img: "user6.jpg"
+  },
+  {
+    text: "Salut, le rendez vous ce soir looo, la vidange doit se faire dans les règles de l'art et dans la prière",
+    img: "user7.jpg"
+  }
+];
+
+let currentChat = 0;
+
+/* ===== TOGGLE CHAT ===== */
+function toggleChat() {
+  document.getElementById("chatbot").classList.toggle("closed");
+}
+
+/* ===== TYPING EFFECT ===== */
+function showTyping() {
+  let typing = document.getElementById("typing");
+  typing.style.display = "block";
+
+  typing.innerHTML =
+    "En train d’écrire <span class='dot'>.</span><span class='dot'>.</span><span class='dot'>.</span>";
+
+  return new Promise(resolve => {
+    setTimeout(() => {
+      typing.style.display = "none";
+      resolve();
+    }, 1200);
+  });
+}
+
+/* ===== UPDATE MESSAGE ===== */
+async function updateChatbot() {
+  await showTyping();
+
+  currentChat = Math.floor(Math.random() * chatbotMessages.length);
+
+  document.getElementById("chatText").innerHTML = `
+  <div class="chatBubble">
+    <img id="chatUser" src="${chatbotMessages[currentChat].img}">
+    <div class="chatText">
+      ${chatbotMessages[currentChat].text}
+    </div>
+  </div>
+`;
+}
+
+/* ===== WHATSAPP ===== */
+function openChatWhatsApp() {
+  let msg = chatbotMessages[currentChat].text;
+  let url = "https://wa.me/22893875723?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
+}
+
+/* AUTO ROTATION */
+setInterval(updateChatbot, 7000);
+updateChatbot();
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N'AUGUSTE - FEMMES</title>
+
+<style>
+
+/* ========================= */
+/* BODY */
+/* ========================= */
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f5f5;
+    color:#111;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+nav{
+    background:rgb(241, 173, 173);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 15px rgba(0,0,0,0.08);
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    padding:0;
+}
+
+nav ul li{
+    margin:0 10px;
+}
+
+nav a{
+    color:#c40000;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ff0000;
+}
+
+nav a.active{
+    border-bottom:3px solid #c40000;
+}
+.logo img{
+    width:220px;
+}
+
+.logos img{
+    width:120px;
+}
+
+/* ========================= */
+/* TITRE */
+/* ========================= */
+
+.title{
+    text-align:center;
+    padding:40px 10px;
+    background:white;
+}
+
+.title h1{
+    color:#b30000;
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.title p{
+    color:#555;
+}
+
+/* ========================= */
+/* PRODUITS */
+/* ========================= */
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    padding:40px 20px;
+}
+
+.card{
+    width:300px;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+    border:1px solid #eee;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:
+    0 10px 30px rgba(196,0,0,0.25);
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.content{
+    padding:18px;
+}
+
+.content h3{
+    margin-top:0;
+    color:#b30000;
+    font-size:22px;
+}
+
+.resume{
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* ========================= */
+/* BOUTONS */
+/* ========================= */
+
+.price-btn{
+    width:100%;
+    margin-top:15px;
+    background:linear-gradient(to right,#b30000,#ff1a1a);
+    border:none;
+    color:white;
+    padding:12px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:16px;
+    box-shadow:0 5px 15px rgba(255,0,0,0.2);
+}
+
+.contact-btn{
+    width:100%;
+    margin-top:12px;
+    background:white;
+    border:2px solid #b30000;
+    color:#b30000;
+    padding:12px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.contact-btn:hover{
+    background:#b30000;
+    color:white;
+}
+
+/* ========================= */
+/* WHATSAPP FLOAT */
+/* ========================= */
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    width:65px;
+    height:65px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:30px;
+    z-index:9999;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+    border-top:1px solid #ddd;
+}
+
+footer a{
+    color:#b30000;
+    text-decoration:none;
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav ul{
+        flex-direction:column;
+    }
+
+    nav ul li{
+        margin:8px 0;
+    }
+
+    .logo img{
+        width:180px;
+    }
+
+    .card{
+        width:100%;
+    }
+
+    .title h1{
+        font-size:30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- MENU -->
+<!-- ========================= -->
+
+<nav>
+
+    <div class="logo">
+        <img src="logo3.png">
+    </div>
+
+    <ul>
+        <li><a href="accueil2.html">ACCUEIL</a></li>
+        <li><a href="boutique3.html" class="active">BOUTIQUE</a></li>
+        <li><a href="boutique22.html">EXTRA</a></li>
+    </ul>
+
+    <div class="logos">
+        <img src="logo2.png">
+    </div>
+
+</nav>
+
+<!-- ========================= -->
+<!-- TITRE -->
+<!-- ========================= -->
+
+<div class="title">
+    <h1>Notre Boutique pour femmes</h1>
+    <p>Découvrez nos nouveaux produits disponibles</p>
+</div>
+
+<!-- ========================= -->
+<!-- PRODUITS -->
+<!-- ========================= -->
+
+<div class="products">
+
+    <!-- PRODUIT 1 -->
+    <div class="card">
+
+        <img src="femme1.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">SLEEPING BEAVEY</h3>
+
+            <p class="resume">
+                Booster la libido de la femme à 2000%.
+            </p>
+
+            <button class="price-btn">
+                1 500 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 2 -->
+    <div class="card">
+
+        <img src="femme2.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">POSTINOR 2</h3>
+
+            <p class="resume">
+                Les pilules parfaites pour votre femme...
+            </p>
+
+            <button class="price-btn">
+                2 500 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 3 -->
+    <div class="card">
+
+        <img src="femme3.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">LEVONORGESTREL</h3>
+
+            <p class="resume">
+                Eviter les grossesse indésiré, profiter du sexe
+            </p>
+
+            <button class="price-btn">
+                3 000 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 4 -->
+    <div class="card">
+
+        <img src="femme4.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">TENUE SEXY</h3>
+
+            <p class="resume">
+                Rendez votre homme heureux de vous avoir..
+            </p>
+
+            <button class="price-btn">
+                7 000 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 5 -->
+    <div class="card">
+
+        <img src="femme5.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">LINGERIES SENSUELLES MODEL 1</h3>
+
+            <p class="resume">
+                MONTREZ la femme en vous pour créer la confiance avec votre partenaire.
+            </p>
+
+            <button class="price-btn">
+                700 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 6 -->
+    <div class="card">
+
+        <img src="femme6.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">LINGERIES SENSUELLES MODEL 2</h3>
+
+            <p class="resume">
+                MONTREZ la femme en vous pour créer la confiance avec votre partenaire.
+            </p>
+
+            <button class="price-btn">
+                700 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 7 -->
+    <div class="card">
+
+        <img src="femme7.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">TENUE LEGERE MODEL 1</h3>
+
+            <p class="resume">
+                Amusez vous à le tenter...
+            </p>
+
+            <button class="price-btn">
+                3 500 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 8 -->
+    <div class="card">
+
+        <img src="femme8.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">LINGERIES SENSUELLES MODEL 3</h3>
+
+            <p class="resume">
+                MONTREZ la femme en vous pour créer la confiance avec votre partenaire.
+            </p>
+
+            <button class="price-btn">
+                700 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+    <!-- PRODUIT 9 -->
+    <div class="card">
+
+        <img src="femme9.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">LINGERIES SENSUELLES MODEL 4</h3>
+
+            <p class="resume">
+                MONTREZ la femme en vous pour créer la confiance avec votre partenaire.
+            </p>
+
+            <button class="price-btn">
+                700 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 10 -->
+    <div class="card">
+
+        <img src="femme10.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">LINGERIES SENSUELLES MODEL 5</h3>
+
+            <p class="resume">
+                MONTREZ la femme en vous pour créer la confiance avec votre partenaire.
+            </p>
+
+            <button class="price-btn">
+                700 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 11 -->
+    <div class="card">
+
+        <img src="femme11.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">TENUE LEGERE MODEL 2</h3>
+
+            <p class="resume">
+                Amusez vous à le tenter...
+            </p>
+
+            <button class="price-btn">
+                3 500 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+     <!-- PRODUIT 12 -->
+    <div class="card">
+
+        <img src="femme12.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">SUPER NUISETTE</h3>
+
+            <p class="resume">
+                Passez de belles nuits intenses
+            </p>
+
+            <button class="price-btn">
+                5 000 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUIT 13 -->
+    <div class="card">
+
+        <img src="femme13.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">ROBE SEXY</h3>
+
+            <p class="resume">
+                Sans commentaire, portez seulement et vous verrez...
+            </p>
+
+            <button class="price-btn">
+                7 000 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+     <!-- PRODUIT 14 -->
+    <div class="card">
+
+        <img src="femme14.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">BREAST REDUCTION</h3>
+
+            <p class="resume">
+                Rend les seins plus fermes et lutte contre les vergetures...
+            </p>
+
+            <button class="price-btn">
+                8 000 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+     <!-- PRODUIT 15 -->
+    <div class="card">
+
+        <img src="femme15.jpg">
+
+        <div class="content">
+
+            <h3 class="product-title">FEMME 5 ETOILES</h3>
+
+            <p class="resume">
+                Pour vos Problemes de menstrues douloureuses, frigités...
+            </p>
+
+            <button class="price-btn">
+                3 000 FCFA
+            </button>
+
+            <button class="contact-btn">
+                Contactez-nous
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- WHATSAPP FLOAT -->
+<!-- ========================= -->
+
+<a href="https://wa.me/22893875723" class="whatsapp">
+💬
+</a>
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer>
+
+<a href="mentions-legales.html">Mentions légales</a> |
+<a href="cgu.html">Conditions d'utilisation</a> |
+<a href="confidentialite.html">Politique de confidentialité</a>
+
+</footer>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+
+/* ========================= */
+/* WHATSAPP MESSAGE AUTO */
+/* ========================= */
+
+const buttons = document.querySelectorAll(".contact-btn");
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", function(){
+
+        const card = this.closest(".card");
+
+        const title = card.querySelector(".product-title").innerText;
+
+        const message = 
+        "Bonjour, je veux le produit : " + title;
+
+        const whatsappURL =
+        "https://wa.me/22893875723?text=" 
+        + encodeURIComponent(message);
+
+        window.open(whatsappURL, "_blank");
+
+    });
+
+});
+
+/* ========================= */
+/* ANIMATION PRODUITS */
+/* ========================= */
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px)";
+    card.style.transition = "0.6s";
+
+});
+
+window.addEventListener("scroll", () => {
+
+    cards.forEach(card => {
+
+        const position = card.getBoundingClientRect().top;
+
+        if(position < window.innerHeight - 50){
+
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

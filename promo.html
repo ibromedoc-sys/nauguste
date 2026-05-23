@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N'AUGUSTE - Espace Promo</title>
+
+<style>
+
+/* ========================= */
+/* BODY */
+/* ========================= */
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#111;
+    color:white;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+nav{
+    background:#000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    flex-wrap:wrap;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    padding:0;
+}
+
+nav ul li{
+    margin:0 10px;
+}
+
+nav a{
+    color:red;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a.active{
+    border-bottom:3px solid red;
+}
+
+.logo img{
+    width:220px;
+}
+
+.logos img{
+    width:120px;
+}
+
+/* ========================= */
+/* TITRE */
+/* ========================= */
+
+.title{
+    text-align:center;
+    padding:40px 15px;
+}
+
+.title h1{
+    color:red;
+    font-size:40px;
+}
+
+.title p{
+    color:#ccc;
+}
+
+/* ========================= */
+/* QUIZ */
+/* ========================= */
+
+.quiz-section{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.quiz-btn{
+    background:red;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.quiz-btn:hover{
+    background:#ff2d2d;
+    transform:scale(1.05);
+}
+
+/* ========================= */
+/* POPUP */
+/* ========================= */
+
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.popup-content{
+    background:#1d1d1d;
+    width:90%;
+    max-width:500px;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    position:relative;
+}
+
+.popup-content h2{
+    color:red;
+}
+.popup{
+    overflow-y:auto;   /* 🔥 permet de scroller le popup */
+    padding:20px 0;
+}
+.popup-content{
+    max-height:90vh;   /* ne dépasse pas l’écran */
+    overflow-y:auto;   /* scroll si contenu trop grand */
+}
+
+.answer-btn{
+    width:100%;
+    margin-top:12px;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#333;
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.answer-btn:hover{
+    background:red;
+}
+
+.close-popup{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:28px;
+    cursor:pointer;
+    color:white;
+}
+
+.result{
+    margin-top:20px;
+}
+
+.result img{
+    width:100%;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+/* ========================= */
+/* PROMOS */
+/* ========================= */
+
+.promos{
+    padding:40px 20px;
+}
+
+.promos-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.promos-title h2{
+    color:red;
+    font-size:35px;
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.card{
+    width:300px;
+    background:#1d1d1d;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:
+    0 0 10px red,
+    0 0 20px rgba(255,0,0,0.7),
+    0 0 40px rgba(255,0,0,0.5);
+    animation:glow 2s infinite alternate;
+    transition:0.4s;
+}
+
+@keyframes glow{
+    from{
+        box-shadow:
+        0 0 10px red,
+        0 0 20px rgba(255,0,0,0.7);
+    }
+
+    to{
+        box-shadow:
+        0 0 20px #ff0000,
+        0 0 40px rgba(255,0,0,1);
+    }
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+/* ========================= */
+/* SLIDER IMAGES */
+/* ========================= */
+
+.slider{
+    position:relative;
+    width:100%;
+    height:250px;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition:opacity 1s ease;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.content{
+    padding:15px;
+}
+
+.content h3{
+    margin-top:0;
+    color:white;
+}
+
+.resume{
+    color:#ccc;
+    line-height:1.5;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:#888;
+    margin-top:15px;
+}
+
+.new-price{
+    color:#00ff66;
+    font-size:22px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.order-btn{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:none;
+    background:green;
+    color:white;
+    border-radius:6px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.order-btn:hover{
+    background:#00a83a;
+}
+
+/* ========================= */
+/* WHATSAPP FLOAT */
+/* ========================= */
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:28px;
+    z-index:999;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav ul{
+        flex-direction:column;
+    }
+
+    nav ul li{
+        margin:10px 0;
+    }
+
+    .logo img{
+        width:180px;
+    }
+    .popup-content{
+    scrollbar-width: thin;
+    }
+
+    .card{
+        width:100%;
+    }
+
+    .title h1{
+        font-size:30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+    <ul>
+        <li><a href="accueil.html">ACCUEIL</a></li>
+        <li><a href="promo.html" class="active">ESPACE PROMO</a></li>
+        <li><a href="boutique.html">BOUTIQUE</a></li>
+        <li><a href="kamasutra.html">KAMASUTRA</a></li>
+    </ul>
+
+    <div class="logos">
+        <img src="logo1.png">
+    </div>
+
+</nav>
+
+<!-- TITRE -->
+
+<section class="title">
+
+    <h1>ESPACE PROMOTION 🔥</h1>
+
+    <p>
+        Profitez des meilleures offres et tentez votre chance au jeu question-réponse.
+    </p>
+
+</section>
+
+<!-- QUIZ -->
+
+<section class="quiz-section">
+
+    <button class="quiz-btn" id="openQuiz">
+        JOUER A QUESTION-REPONSE
+    </button>
+
+</section>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-content">
+
+        <span class="close-popup" id="closePopup">
+            &times;
+        </span>
+
+        <h2>Question Promo</h2>
+
+        <p>
+            Quel produit est actuellement en promotion spéciale ?
+        </p>
+
+        <button class="answer-btn wrong">
+            SLIMMING COFFEE
+        </button>
+
+        <button class="answer-btn correct">
+            TONGKAT ALI
+        </button>
+
+        <button class="answer-btn wrong">
+            Q7
+        </button>
+
+        <div class="result" id="result"></div>
+
+    </div>
+
+</div>
+
+<!-- PROMOS -->
+
+<section class="promos">
+
+    <div class="promos-title">
+        <h2>Produits en Promotion</h2>
+    </div>
+
+    <div class="cards">
+
+        <!-- CARD 1 -->
+        <div class="card">
+        <div class="slider">
+
+    <img src="promo1.jpg" class="slide active">
+    <img src="promo1b.jpg" class="slide">
+    <img src="promo1c.jpg" class="slide">
+      </div>
+
+            <div class="content">
+
+                <h3 class="product-title">
+                    TONGKAT ALI
+                </h3>
+
+                <p class="resume">
+                    Tongkat Ali : booster naturel premium améliorant énergie, endurance, vitalité masculine, confiance, performances et récupération quotidienne..
+                </p>
+
+                <div class="old-price">
+                    15 000 FCFA
+                </div>
+
+                <div class="new-price">
+                    12 000 FCFA
+                </div>
+
+                <button class="order-btn">
+                    Commander
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+       <div class="card">
+        <div class="slider">
+
+    <img src="promo2.jpg" class="slide active">
+    <img src="promo2b.jpg" class="slide">
+    <img src="promo2c.jpg" class="slide">
+        </div>
+
+            <div class="content">
+
+                <h3 class="product-title">
+                    PROCOMIL SPRAY
+                </h3>
+
+                <p class="resume">
+                    Procomil Spray : spray performant aidant à prolonger l’endurance, améliorer le contrôle et intensifier les sensations intimes.
+                </p>
+
+                <div class="old-price">
+                    8 000 FCFA
+                </div>
+
+                <div class="new-price">
+                    5 000 FCFA
+                </div>
+
+                <button class="order-btn">
+                    Commander
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="card">
+
+            <div class="slider">
+
+    <img src="promo3.jpg" class="slide active">
+    <img src="promo3b.jpg" class="slide">
+    <img src="promo3c.jpg" class="slide">
+
+</div>
+
+            <div class="content">
+
+                <h3 class="product-title">
+                    VigRX Plus
+                </h3>
+
+                <p class="resume">
+                    VigRX Plus : complément masculin reconnu stimulant endurance, vitalité, confiance et performances naturelles pour des moments intenses.
+                </p>
+
+                <div class="old-price">
+                    15 000 FCFA
+                </div>
+
+                <div class="new-price">
+                    12 500 FCFA
+                </div>
+
+                <button class="order-btn">
+                    Commander
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/22893875723" class="whatsapp">
+💬
+</a>
+
+<!-- FOOTER -->
+
+<footer>
+
+<a href="mentions-legales.html">Mentions légales</a> |
+<a href="cgu.html">Conditions d'utilisation</a> |
+<a href="confidentialite.html">Politique de confidentialité</a>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* ========================= */
+/* POPUP */
+/* ========================= */
+
+const popup = document.getElementById("popup");
+
+document.getElementById("openQuiz").onclick = () => {
+
+    popup.style.display = "flex";
+
+}
+
+document.getElementById("closePopup").onclick = () => {
+
+    popup.style.display = "none";
+
+}
+
+/* ========================= */
+/* QUIZ RESULT */
+/* ========================= */
+
+const result = document.getElementById("result");
+const answers = document.querySelectorAll(".answer-btn");
+
+answers.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        // 🔥 cache toutes les réponses immédiatement
+        answers.forEach(btn => btn.style.display = "none");
+
+        if (this.classList.contains("correct")) {
+
+            result.innerHTML = `
+                <h3 style="color:#00ff66;">
+                    Félicitations 🎉
+                </h3>
+
+                <p>
+                    Bonne réponse ! Après la théorie vient la pratique.
+                </p>
+
+                <img src="winner.jpg">
+            `;
+
+        } else {
+
+            result.innerHTML = `
+                <h3 style="color:red;">
+                    Désolé 😢
+                </h3>
+
+                <p>
+                    Mauvaise réponse, à bientôt !
+                </p>
+            `;
+        }
+    });
+
+});
+
+/* ========================= */
+/* WHATSAPP */
+/* ========================= */
+
+const orderButtons = document.querySelectorAll(".order-btn");
+
+orderButtons.forEach(button => {
+
+    button.addEventListener("click", function(){
+
+        const card = this.closest(".card");
+
+        const title = card.querySelector(".product-title").innerText;
+
+        const message =
+        "Bonjour, je veux le produit : " + title;
+
+        const whatsappURL =
+        "https://wa.me/22893875723?text=" +
+        encodeURIComponent(message);
+
+        window.open(whatsappURL, "_blank");
+
+    });
+
+});
+
+/* ========================= */
+/* SLIDER PROMOS */
+/* ========================= */
+
+const sliders = document.querySelectorAll(".slider");
+
+sliders.forEach(slider => {
+
+    const slides = slider.querySelectorAll(".slide");
+
+    let index = 0;
+
+    setInterval(() => {
+
+        slides[index].classList.remove("active");
+
+        index = (index + 1) % slides.length;
+
+        slides[index].classList.add("active");
+
+    }, 3000);
+
+});
+
+</script>
+
+</body>
+</html>

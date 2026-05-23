@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N'AUGUSTE - ACCUEIL</title>
+
+<style>
+
+/* ========================= */
+/* BODY */
+/* ========================= */
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f5f5;
+    color:#111;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+nav{
+    background:rgb(241, 173, 173);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 15px rgba(0,0,0,0.08);
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    padding:0;
+}
+
+nav ul li{
+    margin:0 10px;
+}
+
+nav a{
+    color:#c40000;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ff0000;
+}
+
+nav a.active{
+    border-bottom:3px solid #c40000;
+}
+
+.logo img{
+    width:220px;
+}
+
+.logos img{
+    width:120px;
+}
+
+/* ========================= */
+/* HERO SLIDER */
+/* ========================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:90vh;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:1s;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(45%);
+}
+
+.slide-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:white;
+    width:90%;
+}
+
+.slide-content h1{
+    font-size:60px;
+    margin-bottom:15px;
+    text-shadow:0 5px 20px rgba(0,0,0,0.5);
+}
+
+.slide-content p{
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.hero-btn{
+    background:linear-gradient(to right,#b30000,#ff1a1a);
+    color:white;
+    padding:15px 35px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.4s;
+    box-shadow:0 5px 20px rgba(255,0,0,0.3);
+}
+
+.hero-btn:hover{
+    transform:scale(1.05);
+}
+
+/* ========================= */
+/* SECTION */
+/* ========================= */
+
+.section{
+    padding:70px 20px;
+    background:white;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:42px;
+    color:#b30000;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#666;
+    font-size:18px;
+}
+
+/* ========================= */
+/* FEATURES */
+/* ========================= */
+
+.features{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.feature-box{
+    width:300px;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+}
+
+.feature-box h3{
+    color:#b30000;
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.feature-box p{
+    color:#666;
+    line-height:1.7;
+}
+
+/* ========================= */
+/* PRODUITS */
+/* ========================= */
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.card{
+    width:300px;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 30px rgba(196,0,0,0.25);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.content h3{
+    color:#b30000;
+    margin-top:0;
+}
+
+.content p{
+    color:#666;
+    line-height:1.6;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    background:#b30000;
+    color:white;
+    padding:12px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ff0000;
+}
+
+/* ========================= */
+/* BANNER */
+/* ========================= */
+
+.banner{
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('banner.jpg') center/cover;
+    color:white;
+    text-align:center;
+    padding:100px 20px;
+}
+
+.banner h2{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.banner p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:white;
+    text-align:center;
+    padding:25px;
+    border-top:1px solid #ddd;
+}
+
+footer a{
+    color:#b30000;
+    text-decoration:none;
+}
+
+/* ========================= */
+/* WHATSAPP */
+/* ========================= */
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    width:65px;
+    height:65px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:30px;
+    z-index:9999;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+/* SECTION TIKTOK */
+
+.tiktok-section{
+    background:#000;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.tiktok-section h2{
+    color:red;
+    margin-bottom:10px;
+}
+
+.tiktok-section p{
+    color:#ccc;
+    margin-bottom:20px;
+}
+
+.tiktok-btn{
+    width:90px;
+    transition:0.3s;
+    animation:tiktokPulse 1.5s infinite;
+}
+
+.tiktok-btn:hover{
+    transform:scale(1.1);
+}
+
+@keyframes tiktokPulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav ul{
+        flex-direction:column;
+    }
+
+    nav ul li{
+        margin:8px 0;
+    }
+
+    .logo img{
+        width:180px;
+    }
+
+    .hero{
+        height:75vh;
+    }
+
+    .slide-content h1{
+        font-size:35px;
+    }
+
+    .slide-content p{
+        font-size:16px;
+    }
+
+    .section-title h2{
+        font-size:30px;
+    }
+
+    .banner h2{
+        font-size:35px;
+    }
+
+    .feature-box,
+    .card{
+        width:100%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
+
+<nav>
+
+    <div class="logo">
+        <img src="logo3.png">
+    </div>
+
+    <ul>
+        <li><a href="accueil2.html" class="active">ACCUEIL</a></li>
+        <li><a href="boutique3.html">BOUTIQUE</a></li>
+        <li><a href="boutique22.html">EXTRA</a></li>
+        <li><a href="kamasutra2.html">KAMASUTRA</a></li>
+    </ul>
+
+    <div class="logos">
+        <img src="logo2.png">
+    </div>
+
+</nav>
+
+<!-- ========================= -->
+<!-- HERO SLIDER -->
+<!-- ========================= -->
+
+<section class="hero">
+
+    <div class="slide active">
+        <img src="slide1.jpg">
+        <div class="slide-content">
+            <h1>Le plaisir commence ici</h1>
+            <p>
+                Découvrez des produits uniques pour des moments encore plus intenses.
+            </p>
+            <a href="boutique3.html" class="hero-btn">
+                Voir les produits
+            </a>
+        </div>
+    </div>
+
+    <div class="slide">
+        <img src="slide2.jpg">
+        <div class="slide-content">
+            <h1>Confiance & Séduction</h1>
+            <p>
+                Faites ressortir votre charme avec notre collection spéciale.
+            </p>
+            <a href="boutique3.html" class="hero-btn">
+                Boutique femmes
+            </a>
+        </div>
+    </div>
+
+    <div class="slide">
+        <img src="slide3.jpg">
+        <div class="slide-content">
+            <h1>Produits tendance</h1>
+            <p>
+                Qualité, discrétion et satisfaction pour tous vos besoins.
+            </p>
+            <a href="boutique3.html" class="hero-btn">
+                Découvrir
+            </a>
+        </div>
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- PRESENTATION -->
+<!-- ========================= -->
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Bienvenue chez N'AUGUSTE</h2>
+        <p>
+            Votre boutique moderne dédiée au bien-être, à la séduction et au plaisir.
+        </p>
+    </div>
+
+    <div class="features">
+
+        <div class="feature-box">
+            <h3>Livraison rapide</h3>
+            <p>
+                Commandez facilement et recevez vos produits dans les meilleurs délais.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h3>Discrétion garantie</h3>
+            <p>
+                Vos commandes sont traitées avec confidentialité et professionnalisme.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h3>Produits de qualité</h3>
+            <p>
+                Nous sélectionnons des produits appréciés pour leur efficacité et leur popularité.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- PRODUITS POPULAIRES -->
+<!-- ========================= -->
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Produits populaires</h2>
+        <p>
+            Quelques articles les plus appréciés de notre boutique.
+        </p>
+    </div>
+
+    <div class="products">
+
+        <div class="card">
+            <img src="femme15.jpg">
+            <div class="content">
+                <h3>FEMME 5 ETOILES</h3>
+                <p>
+                    Pour vos Problemes de menstrues douloureuses, frigités...
+                </p>
+                <a href="boutique3.html" class="btn">
+                    Commander
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="femme1.jpg">
+            <div class="content">
+                <h3>SLEEPING BEAVEY</h3>
+                <p>
+                    Booster la libido de la femme à 2000%.
+                </p>
+                <a href="boutique3.html" class="btn">
+                    Commander
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="femme11.jpg">
+            <div class="content">
+                <h3>LINGERIES SENSUELLES</h3>
+                <p>
+                    Découvrez des modèles élégants pour des moments séduisants.
+                </p>
+                <a href="boutique3.html" class="btn">
+                    Voir plus
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- BANNER -->
+<!-- ========================= -->
+
+<section class="banner">
+
+    <h2>Votre satisfaction avant tout</h2>
+
+    <p>
+        Chez N'AUGUSTE, nous proposons une sélection de produits modernes
+        avec un service rapide, discret et professionnel afin de garantir
+        une excellente expérience à chaque client.
+    </p>
+
+    <!-- SECTION TIKTOK -->
+
+<div class="tiktok-section">
+
+    <h2>Suivez-nous sur TikTok 🔥</h2>
+
+    <p>
+        Découvrez nos nouveautés, promotions et vidéos exclusives.
+    </p>
+
+    <a href="https://www.tiktok.com/@nauguste.1?_r=1&_t=ZS-96a1zyyTsXQ" target="_blank">
+
+        <img src="tiktok.png" class="tiktok-btn">
+
+    </a>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CONTACT -->
+<!-- ========================= -->
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Contact rapide</h2>
+        <p>
+            Besoin d'informations ? Contactez-nous directement sur WhatsApp.
+        </p>
+    </div>
+
+    <div style="text-align:center;">
+        <a href="https://wa.me/22893875723" class="hero-btn">
+            Discuter sur WhatsApp
+        </a>
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- WHATSAPP -->
+<!-- ========================= -->
+
+<a href="https://wa.me/22893875723" class="whatsapp">
+💬
+</a>
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer>
+
+<a href="mentions-legales.html">Mentions légales</a> |
+<a href="cgu.html">Conditions d'utilisation</a> |
+<a href="confidentialite.html">Politique de confidentialité</a>
+
+</footer>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+
+/* ========================= */
+/* SLIDER AUTO */
+/* ========================= */
+
+const slides = document.querySelectorAll(".slide");
+
+let current = 0;
+
+function showSlide(){
+
+    slides.forEach(slide => {
+        slide.classList.remove("active");
+    });
+
+    slides[current].classList.add("active");
+
+    current++;
+
+    if(current >= slides.length){
+        current = 0;
+    }
+}
+
+setInterval(showSlide, 4000);
+
+/* ========================= */
+/* ANIMATION SCROLL */
+/* ========================= */
+
+const elements = document.querySelectorAll(
+".feature-box, .card"
+);
+
+elements.forEach(el => {
+
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
+    el.style.transition = "0.6s";
+
+});
+
+window.addEventListener("scroll", () => {
+
+    elements.forEach(el => {
+
+        const position =
+        el.getBoundingClientRect().top;
+
+        if(position < window.innerHeight - 50){
+
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

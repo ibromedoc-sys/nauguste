@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N'AUGUSTE</title>
+
+<style>
+
+body { margin: 0; font-family: Arial; }
+
+
+/* NAVBAR */
+nav {
+  background: #0b0b0b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+}
+nav a.active {
+  color: rgb(254, 3, 3);
+  border-bottom: 3px solid rgb(255, 2, 2);
+}
+
+.logo { font-weight: bold; font-size: 20px; }
+
+nav ul { display: flex; list-style: none; }
+
+nav ul li { margin: 0 10px; }
+
+nav a { color: rgb(252, 3, 3); text-decoration: none; font-weight: bold; cursor: pointer; }
+
+/* LOGOS */
+.logo img{
+    width:220px;
+}
+
+.logos img{
+    width:120px;
+}
+
+
+/* HERO */
+.hero {
+  background: linear-gradient(to right, #000000, #000000);
+  color: rgb(251, 6, 6);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100px;
+  margin-top: 20px;
+  transition: transform 6s ease;
+}
+
+#hero-title {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+#hero-text {
+  font-size: 18px;
+  color: #fc1111;
+}
+
+.hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.hero-text-box {
+  width: 40%;
+}
+
+
+.hero-video-box video {
+  border-radius: 10px;
+}
+.hero-video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* clé magique 🔥 */
+}
+
+.hero-video-box {
+  width: 60%;
+  height: 350px; /* hauteur fixe */
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: black;
+}
+.hero-video-box {
+  aspect-ratio: 16/9;
+  height: auto;
+}
+
+/* HISTOIRES */
+.story-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.story-container img {
+  width: 300px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+
+/* WHATSAPP FLOAT */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#09db56bf;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+animation:pulse 1.5s infinite;
+z-index: 9999;
+}
+
+/* description cachée */
+.desc { display: none; margin-top: 10px; font-size: 14px; }
+
+
+/* CONTACT */
+.contact {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+
+/* BANNIERE TV */
+.tv-bar {
+  display: flex;
+  align-items: center;
+  background: black;
+  color: white;
+  height: 40px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* partie gauche (label) */
+.tv-label {
+  background: #d32f2f;
+  padding: 0 15px;
+  font-weight: bold;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* zone défilement */
+.tv-marquee {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* texte qui défile */
+.tv-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollTV 60s linear infinite;
+}
+
+/* espacement entre messages */
+.tv-track span {
+  margin-right: 50px;
+}
+
+/* animation */
+@keyframes scrollTV {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* FOOTER ACCUEIL */
+.footer-home {
+  background: black;
+  color: rgb(225, 203, 203);
+  text-align: center;
+  padding: 30px;
+}
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+}
+
+/* animation apparition */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(56,239,125,0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(56,239,125,0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(56,239,125,0);
+  }
+}
+
+
+
+
+
+
+/* BLOQUE LES CLICS 🔥 */
+.no-click {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  cursor: default;
+}
+
+#hero-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  transition: opacity 0.5s ease;
+}
+/* POPUP AGE */
+#age-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.age-box {
+  background: #111;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.age-box h2 {
+  color: red;
+}
+
+.age-buttons {
+  margin-top: 20px;
+}
+
+.age-buttons button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.age-buttons button:first-child {
+  background: green;
+  color: white;
+}
+
+.age-buttons button:last-child {
+  background: red;
+  color: white;
+}
+
+/* SECTION TIKTOK */
+
+.tiktok-section{
+    background:#000;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.tiktok-section h2{
+    color:red;
+    margin-bottom:10px;
+}
+
+.tiktok-section p{
+    color:#ccc;
+    margin-bottom:20px;
+}
+
+.tiktok-btn{
+    width:90px;
+    transition:0.3s;
+    animation:tiktokPulse 1.5s infinite;
+}
+
+.tiktok-btn:hover{
+    transform:scale(1.1);
+}
+
+@keyframes tiktokPulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+/* RESPONSIVE 🔥🔥🔥 */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 5px 0;
+  }
+
+  .logos img {
+    width: 90px;
+  }
+   .logo img {
+    width: 250px;
+  }
+
+  /* HERO */
+  .hero-flex {
+    flex-direction: column;
+  }
+
+  .hero-text-box,
+  .hero-video-box {
+    width: 100%;
+  }
+
+  #hero-title {
+    font-size: 26px;
+  }
+
+  #hero-text {
+    font-size: 15px;
+  }
+
+  /* STORY */
+  .story-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .story-container img {
+    width: 90%;
+    margin: 0 0 15px 0;
+  }
+
+  /* TV */
+  .tv-bar {
+    font-size: 12px;
+  }
+
+  /* WHATSAPP */
+  .whatsapp {
+    padding: 12px;
+    font-size: 18px;
+  }
+
+  
+}
+
+</style>
+</head>
+
+<body>
+<!-- POPUP AGE -->
+<div id="age-popup">
+  <div class="age-box">
+    <h2>⚠️ Contenu sensible</h2>
+    <p>Ce site peut contenir du contenu réservé aux adultes.<br> Avez-vous plus de 18 ans ?</p>
+
+    <div class="age-buttons">
+      <button onclick="acceptAge()">Oui, j'ai 18+</button>
+      <button onclick="رفضAge()">Non</button>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<nav>
+  <div class="logo">
+<img src="logo.png">
+</div>
+
+  <ul>
+  <li><a href="accueil.html" class="active">ACCUEIL</a></li>
+  <li><a href="promo.html">ESPACE PROMO</a></li>
+  <li><a href="boutique.html">BOUTIQUE</a></li>
+  <li><a href="assistance.html">CONTACT</a></li>
+
+</ul>
+
+  <div class="logos">
+    <img src="logo1.png">
+    
+  </div>
+</nav>
+
+<!-- PAGE ACCUEIL -->
+<div id="home" class="page active">
+
+  <div class="hero">
+  <div class="hero-flex">
+
+    <div class="hero-text-box">
+      <h1 id="hero-title">Bienvenue chez N'AUGUSTE</h1>
+      <p id="hero-text">Améliorez votre expérience avec nos produits</p>
+    </div>
+
+    <div class="hero-video-box">
+      <img id="hero-image" src="pub110.jpg" alt="image">
+    </div>
+
+  </div>
+</div>
+
+   <!-- TV SHOW FLASH INFOS-->
+<div class="tv-bar">
+  <div class="tv-label">FLASH INFO</div>
+
+  <div class="tv-marquee">
+    <div class="tv-track">
+      <span> Nos produits sont disponibles à notre bureau , passez vos commandes sur ce site</span>
+      <span> Cliquez sur l'espace client et accédez à notre catalogue ... </span>
+      
+    </div>
+  </div>
+</div>
+
+  <h2 style="text-align:center;">Nos produits XXX</h2>
+
+  <div class="story-container fade-in">
+    <img id="story-img" src="story1.jpg">
+    <p id="story-text">Pour tirer un bon coup dans les bonnes mesures de securité.</p>
+  </div>
+  <!-- SECTION VIDEO YOUTUBE -->
+<!-- SECTION TIKTOK -->
+
+<div class="tiktok-section">
+
+    <h2>Suivez-nous sur TikTok 🔥</h2>
+
+    <p>
+        Découvrez nos nouveautés, promotions et vidéos exclusives.
+    </p>
+
+    <a href="https://www.tiktok.com/@ajasec_togo" target="_blank">
+
+        <img src="tiktok.png" class="tiktok-btn">
+
+    </a>
+
+</div>
+
+  <!-- NOUVEL ESPACE NOIR -->
+ </div>
+
+
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/22893875723" class="whatsapp">💬</a>
+
+<footer style="text-align:center; padding:20px; font-size:14px;background: black;color: white;">
+  <a href="mentions-legales.html">Mentions légales</a> |
+  <a href="cgu.html">Conditions d'utilisation</a> |
+  <a href="confidentialite.html">Politique de confidentialité</a>
+</footer>
+
+<script>
+
+const images = [
+  "pub110.jpg",
+  "pub112.jpg",
+  "pub113.jpg",
+  "pub114.jpg",
+  "pub115.jpg"
+];
+
+let index = 0;
+const heroImage = document.getElementById("hero-image");
+
+setInterval(() => {
+  index = (index + 1) % images.length;
+
+  heroImage.style.opacity = 0;
+
+  setTimeout(() => {
+    heroImage.src = images[index];
+    heroImage.style.opacity = 1;
+  }, 300);
+
+}, 3000); // change toutes les 3 secondes
+
+
+function unmuteVideo() {
+  const player = document.getElementById("ytplayer");
+
+  player.contentWindow.postMessage(
+    JSON.stringify({
+      event: "command",
+      func: "unMute",
+      args: []
+    }),
+    "*"
+  );
+}
+
+
+/* PERSONNALITES EMBLEMATIQUES */
+let stories = [
+  {img:"story1.jpg", text:"Pour tirer un bon coup dans les bonnes mesures de securité."},
+  {img:"story2.jpg", text:"Fais la vibrer, c'est son droit, ne la prive pas, c'est la démocratie."},
+  {img:"story3.jpg", text:"Avec le 9 millimètre, ne rates jamais ta cible."}
+];
+
+let s = 0;
+
+setInterval(()=>{
+  s=(s+1)%stories.length;
+  document.getElementById("story-img").src = stories[s].img;
+  document.getElementById("story-text").innerText = stories[s].text;
+},10000);
+
+
+/* ANIMATION SCROLL */
+let elements = document.querySelectorAll('.fade-in');
+
+window.addEventListener('scroll', ()=>{
+  elements.forEach(el=>{
+    let pos = el.getBoundingClientRect().top;
+    if(pos < window.innerHeight - 50){
+      el.classList.add('show');
+    }
+  });
+});
+
+
+function acceptAge() {
+  document.getElementById("age-popup").style.display = "none";
+
+  // optionnel : mémoriser le choix
+  localStorage.setItem("ageAccepted", "true");
+}
+
+function رفضAge() {
+  window.location.href = "https://www.google.com";
+}
+
+// vérifier si déjà accepté
+window.addEventListener("load", () => {
+  if(localStorage.getItem("ageAccepted") === "true"){
+    document.getElementById("age-popup").style.display = "none";
+  }
+});
+
+
+</script>
+
+</body>
+</html>

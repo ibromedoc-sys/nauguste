@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N'AUGUSTE - Accès réservé</title>
+
+<style>
+
+/* ========================= */
+/* BODY */
+/* ========================= */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:black;
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* ========================= */
+/* BACKGROUND EFFECT */
+/* ========================= */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(
+    rgba(0,0,0,0.8),
+    rgba(0,0,0,0.9)),
+    url("bg.jpg");
+    background-size:cover;
+    background-position:center;
+    filter:blur(2px);
+    z-index:-1;
+}
+
+/* ========================= */
+/* BOX */
+/* ========================= */
+
+.container{
+    width:90%;
+    max-width:600px;
+    background:rgba(0,0,0,0.75);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:50px 35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(255,0,0,0.25);
+    animation:fadeIn 1s ease;
+}
+
+.container h1{
+    font-size:50px;
+    color:#ff1a1a;
+    margin-bottom:10px;
+}
+
+.container h2{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.container p{
+    color:#ccc;
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* ========================= */
+/* BUTTONS */
+/* ========================= */
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 35px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.adult{
+    background:linear-gradient(to right,#b30000,#ff1a1a);
+    color:white;
+    box-shadow:0 5px 20px rgba(255,0,0,0.3);
+}
+
+.adult:hover{
+    transform:scale(1.05);
+}
+
+.exit{
+    background:white;
+    color:black;
+}
+
+.exit:hover{
+    background:#ddd;
+}
+
+/* ========================= */
+/* POPUP */
+/* ========================= */
+
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.popup-content{
+    background:#111;
+    width:90%;
+    max-width:450px;
+    padding:40px 30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(255,0,0,0.25);
+    animation:popupAnim 0.4s ease;
+}
+
+.popup-content h2{
+    color:#ff1a1a;
+    margin-bottom:15px;
+}
+
+.popup-content p{
+    color:#ccc;
+    margin-bottom:30px;
+}
+
+/* ========================= */
+/* GENDER BUTTONS */
+/* ========================= */
+
+.gender-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.gender-btn{
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.man{
+    background:#ff1a1a;
+    color:white;
+}
+
+.woman{
+    background:#ff66b3;
+    color:white;
+}
+
+.gender-btn:hover{
+    transform:scale(1.05);
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes popupAnim{
+    from{
+        opacity:0;
+        transform:scale(0.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+    .container h1{
+        font-size:35px;
+    }
+
+    .container h2{
+        font-size:22px;
+    }
+
+    .btn,
+    .gender-btn{
+        width:100%;
+    }
+
+    .buttons,
+    .gender-buttons{
+        flex-direction:column;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- MAIN BOX -->
+<!-- ========================= -->
+
+<div class="container">
+
+    <h1>⚠️ +18</h1>
+
+    <h2>Contenu réservé aux adultes</h2>
+
+    <p>
+        Ce site contient du contenu réservé uniquement
+        aux personnes majeures. En entrant, vous confirmez
+        avoir au moins 18 ans.
+    </p>
+
+    <div class="buttons">
+
+        <button class="btn adult" id="adultBtn">
+            J'ai +18 ans
+        </button>
+
+        <button class="btn exit" id="exitBtn">
+            Je suis mineur
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- POPUP -->
+<!-- ========================= -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-content">
+
+        <h2>Choisissez votre espace</h2>
+
+        <p>
+            Sélectionnez votre catégorie pour accéder
+            au contenu correspondant.
+        </p>
+
+        <div class="gender-buttons">
+
+            <button class="gender-btn man" id="manBtn">
+                👨 Homme
+            </button>
+
+            <button class="gender-btn woman" id="womanBtn">
+                👩 Femme
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+
+/* ========================= */
+/* ELEMENTS */
+/* ========================= */
+
+const adultBtn = document.getElementById("adultBtn");
+const exitBtn = document.getElementById("exitBtn");
+const popup = document.getElementById("popup");
+
+const manBtn = document.getElementById("manBtn");
+const womanBtn = document.getElementById("womanBtn");
+
+/* ========================= */
+/* OPEN POPUP */
+/* ========================= */
+
+adultBtn.addEventListener("click", () => {
+
+    popup.style.display = "flex";
+
+});
+
+/* ========================= */
+/* REDIRECTION MINEUR */
+/* ========================= */
+
+exitBtn.addEventListener("click", () => {
+
+    window.location.href = "https://google.com";
+
+});
+
+/* ========================= */
+/* REDIRECTION HOMME */
+/* ========================= */
+
+manBtn.addEventListener("click", () => {
+
+    window.location.href = "accueil.html";
+
+});
+
+/* ========================= */
+/* REDIRECTION FEMME */
+/* ========================= */
+
+womanBtn.addEventListener("click", () => {
+
+    window.location.href = "accueil2.html";
+
+});
+
+</script>
+
+</body>
+</html>

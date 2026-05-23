@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N'AUGUSTE</title>
+
+<style>
+
+body { margin: 0; font-family: Arial; }
+
+/* NAVBAR */
+nav {
+  background: #0b0b0b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+}
+nav a.active {
+  color: rgb(251, 3, 3);
+  border-bottom: 3px solid rgb(254, 18, 6);
+}
+
+.logo { font-weight: bold; font-size: 20px; }
+
+nav ul { display: flex; list-style: none; }
+
+nav ul li { margin: 0 10px; }
+
+nav a { color: rgb(252, 3, 3); text-decoration: none; font-weight: bold; cursor: pointer; }
+
+/* LOGOS */
+.logos img {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
+/* LOGOS */
+.logo img {
+  width: 400px;
+  max-width: 300%;
+  height: auto;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#09db56bf;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+animation:pulse 1.5s infinite;
+z-index: 9999;
+}
+
+/* description cachée */
+.desc { display: none; margin-top: 10px; font-size: 14px; }
+
+.toggle {
+  background: #0f9b0f;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* CONTACT */
+.contact {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+
+/* SECTION PRODUITS */
+/* PRODUITS VERSION LISTE */
+/* PRODUITS */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  width: 300px;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: Arial;
+  text-align: center;
+  background: rgb(36, 36, 36);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Bouton sous l'image */
+.more-btn {
+  margin-top: 10px;
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Description cachée */
+.description {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4; color: white
+}
+
+/* classe pour cacher */
+.hidden {
+  display: none;
+}
+
+.price {
+  font-weight: bold;
+  color: green;
+  margin-top: 10px;
+}
+
+.buy {
+  display: inline-block;
+  margin-top: 10px;
+  background: green;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* FOOTER ACCUEIL */
+.footer-home {
+  background: black;
+  color: rgb(225, 203, 203);
+  text-align: center;
+  padding: 30px;
+}
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+}
+
+/* animation apparition */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(56,239,125,0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(56,239,125,0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(56,239,125,0);
+  }
+}
+
+
+/* POPUP BACKGROUND */
+.popup-ad {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+/* CONTENU */
+.popup-content {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  position: relative;
+  animation: pop 0.4s ease;
+}
+
+/* ANIMATION */
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-content img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.popup-content video {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+/* BOUTON */
+#adBtn {
+  display: block;
+  margin-top: 10px;
+  background: green;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* FERMER */
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* ========================= */
+/* 📱 MOBILE VERSION */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  /* NAVBAR */
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 5px 0;
+  }
+
+  .logos img {
+    width: 90px;
+  }
+  .logo img {
+    width: 250px;
+  }
+
+  /* PRODUITS */
+  .products {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  /* CARD */
+  .card {
+    width: 100%;
+  }
+
+  /* TEXTE */
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  /* BOUTONS */
+  .more-btn,
+  .buy {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* POPUP */
+  .popup-content {
+    width: 95%;
+  }
+
+}
+
+/* TABLETTE */
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+</style>
+</head>
+
+<!-- POPUP PUB -->
+<div id="popupAd" class="popup-ad">
+
+  <div class="popup-content">
+
+    <span class="close-btn" onclick="closeAd()">✖</span>
+
+    <img id="adImage" src="">
+
+    <video id="adVideo" autoplay muted loop playsinline>
+      <source id="adSource" src="" type="video/webm">
+    </video>
+
+    <a id="adBtn" href="#" target="_blank">Commander</a>
+
+  </div>
+
+</div>
+<body>
+
+<!-- MENU -->
+<nav>
+  <div class="logo">
+<img src="logo.png">
+</div>
+
+  <ul>
+  <li><a href="accueil.html" >ACCUEIL</a></li>
+  <li><a href="produits.html" class="active">ESPACE CLIENT</a></li>
+  <li><a href="boutique.html">BOUTIQUE</a></li>
+  <li><a href="kamasutra.html">KAMASUTRA</a></li>
+
+</ul>
+
+  <div class="logos">
+    <img src="logo1.png">
+    
+  </div>
+</nav>
+
+
+<!-- PAGE PRODUITS -->
+<div id="produits" class="page">
+
+  <h1 style="text-align:center;">Nos Produits sexuels</h1>
+
+  <div class="products">
+
+    <div class="card">
+  <img src="produit1.gif" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>Position 1</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Si un homme veut impressionner sa partenaire, cette position est faite pour lui. Il vous permettra de pénétrer le plus profondément possible et d’obtenir le meilleur effet...
+  </p>
+
+  <p class="price">IMPACT PUISSANT</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="toys1.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>LUBRIFIANT ULTRA</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Pénétrer et glissez en toute sécurité!!!
+  </p>
+
+  <p class="price">2 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit2.gif" alt="Fille 2">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 2</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+    💚 Ce support va certainement mettre à l’épreuve les jambes et le dos d’un homme. Et la vue de son dos augmentera constamment le degré d’excitation.
+  </p>
+
+  <p class="price">TOUR EIFEIL</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys2.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>TONGKAT ALI</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Devenez inarrêtable.
+  </p>
+
+  <p class="price">12 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+    <div class="card">
+  <img src="produit3.gif" alt="Fille 3">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 3</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+   Cette position sexuelle est conçue pour une pénétration peu profonde, mais elle permet de stimuler fortement les organes internes.
+  </p>
+
+  <p class="price">FER I</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="toys3.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>BIG BLACK COCK</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Augmenter la taille du 9mm pour sauter de gros engins...
+  </p>
+
+  <p class="price">7 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+
+<div class="card">
+  <img src="produit4.gif" alt="Fille 4">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 4</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+    Technique
+1 pas: Elle se penche en avant pour poser ses paumes sur le sol ou le lit.
+2 pas: La partenaire soulève aussi légèrement ses orteils pour élever ses fesses plus haut et les rendre plus accessibles à l'homme.
+3 pas: L'homme se penche également, soulève ses talons et met ses paumes derrière son dos.
+  </p>
+
+  <p class="price">GRENOUILLE SAUTEUSE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+    
+<div class="card">
+  <img src="toys4.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>PROCOMLL SPRAY</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Devenez TARZAN la nuit.
+  </p>
+
+  <p class="price">5 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+
+    <div class="card">
+  <img src="produit5.gif" alt="Fille 5">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 5</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+    Une position idéale pour profiter à parts égales. Si une femme est allongée là, hurlant de plaisir, de quoi d’autre a-t-on besoin ?
+  </p>
+
+  <p class="price">PIED EN L'AIR</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="toys5.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>VigRX Plus</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Montrez votre virilité.
+  </p>
+
+  <p class="price">12 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="toys6.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>MASTURBATEUR VAGINALE</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Faites vous plaisir.
+  </p>
+
+  <p class="price">SUR COMMANDE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit6.gif" alt="Fille 6">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>PRODUIT 6</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+   Il y a de la magie dans le couple lorsque la pénétration par derrière a lieu dans cette position. Ils aiment le contact serré de leurs corps et les caresses agréables
+  </p>
+
+  <p class="price">RIEN</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys7.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>LARGO</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ La Taille de votre marteau est un atout sur le chantier, vous pouvez tout casser.
+  </p>
+
+  <p class="price">7 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+ <div class="card">
+  <img src="produit7.gif" alt="Fille 7">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 7</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+    L’homme se penche en arrière et profite des sensations fortes tandis que la femme contrôle le rythme et le temps qu’elle passe sur sa partenaire.
+  </p>
+
+  <p class="price">MONTAGNE RUSSE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys8.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>GIGANTO PENITOS</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Faites vous plaisir.
+  </p>
+
+  <p class="price">SUR COMMANDE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+
+<div class="card">
+  <img src="produit8.gif" alt="Fille 8">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 8</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+    Technique
+1 pas:
+La femme s'allonge pour que l'homme puisse s'allonger latéralement à côté d'elle.
+2 pas:
+Elle lève sa jambe supérieure.
+3 pas:
+L'homme peut tenir sa cuisse levée d'une main et ses seins de l'autre.
+  </p>
+
+  <p class="price">SUR LE COTE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys9.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>HUMAN BODY LUBRICANT</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Pimenter vos rapports avec un lubrifiant pour le corps.
+  </p>
+
+  <p class="price">2 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit9.gif" alt="Fille 9">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 9</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+   Cette pose donne aux deux partenaires un sentiment d’espièglerie. Prenez votre temps pour l’exécuter correctement.
+  </p>
+
+  <p class="price">CRABE I</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys10.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>Q7</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Avec ce produit, tenez pendant 2h... Faites le 200 Km sans problème. Il est tres possible que votre femme légitimise la polygamie.
+  </p>
+
+  <p class="price">1 500 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit10.gif" alt="Fille 10">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 10</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+   Tout le monde connaît cette pose, mais tout le monde n’ose pas l’essayer ! Elle a ses partisans et ses détracteurs. Si l’indulgence mutuelle vous attire, il est préférable de commencer par la variante classique.
+  </p>
+
+  <p class="price">69</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys11.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>SLIMMING COFFEE</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Thé aminciçant, ayez une sillouette parfaite, tout le monde aime ça...
+  </p>
+
+  <p class="price">7 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit11.gif" alt="Fille 11">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 11</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+   Cette pose semble difficile à réaliser et ne convient évidemment pas à tout le monde. Mais il provoquera une sensation de fraîcheur de la tête aux pieds et la femme aura un orgasme.. Si l’indulgence mutuelle vous attire, il est préférable de commencer par la variante classique.
+  </p>
+
+  <p class="price">TETE EN BAS</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys12.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>LUBRIANT DE LUXE</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Peu importe la taille, ça passe seulement.
+  </p>
+
+  <p class="price">4 500 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit12.gif" alt="Fille 12">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 12</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+   Technique
+    1 pas:
+L'homme doit se tenir debout, en gardant une petite distance entre ses pieds.
+2 pas:
+La femme repose sa tête sur ses bras croisés sur la table.
+3 pas:
+Il la tient maintenant avec un bras autour de sa taille et l'autre juste au-dessus de ses hanches.
+  </p>
+
+  <p class="price">HOMME DE LA MAISON</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys13.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>ANTIBIOTIC</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Traiter efficacement vos infections.
+  </p>
+
+  <p class="price">3 500 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit13.gif" alt="Fille 13">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 13</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+Elle s'agenouille et pose sa paume et son coude sur la surface.
+2 pas:
+Il s'agenouille derrière elle et la tient par la taille pour mieux la soutenir.
+  </p>
+
+  <p class="price">DOGGY</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys14.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>SLEEPING BEAVEY</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Booster la libido de votre femme à 2000% pour suivre votre rythme.
+  </p>
+
+  <p class="price">1 500 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit14.gif" alt="Fille 14">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 14</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+Elle est allongée sur le lit, sur le ventre, avec une jambe pliée à un angle presque droit.
+2 pas:
+Il met un pied sur sa jambe et pose l'autre sur le sol.
+3 pas:
+Il prend maintenant sa jambe pliée et la soulève légèrement pour se mettre en position.
+  </p>
+
+  <p class="price">CHOIX DES DAMES</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys15.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSTINOR 2</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Les pilules parfaites pour votre femme...
+  </p>
+
+  <p class="price">2 500 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit15.gif" alt="Fille 15">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 15</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+La femme est allongée sur le dos, les jambes écartées.
+2 pas:
+L'homme doit être au dessus, blotti entre ses jambes.
+  </p>
+
+  <p class="price">MISSIONNAIRE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys16.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>LEVONORGESTREL</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Eviter les grossesse indésiré, profiter du sexe.
+  </p>
+
+  <p class="price">3 000 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit16.gif" alt="Fille 16">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 16</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+Un homme est assis sur une chaise, les jambes écartées et pliées aux genoux.
+2 pas:
+La partenaire s'assoit à genoux face à l'homme, ses hanches chevauchant les siennes.
+3 pas:
+Les deux s'accrochent l'un à l'autre pour surveiller leurs réactions.
+  </p>
+
+  <p class="price">FACE A FACE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys17.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>TISSUE MAGIC MANN</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Réveil ta virilité cachée.
+  </p>
+
+  <p class="price">3 500 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit17.gif" alt="Fille 17">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 17</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+L'homme se tient droit, en pliant légèrement les genoux.
+2 pas:
+La femme le tient par le cou, ses bras et ses jambes se referment autour de lui.
+3 pas:
+Il la tient par les hanches pour la soutenir.
+  </p>
+
+  <p class="price">ELEPHANT</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="toys18.jpg" alt="Fille 1">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>ROYAL CHOCOLATE</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+✨ Le chocolat qui booste la libido...
+  </p>
+
+  <p class="price">2 500 FCFA</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Commander</a>
+
+  
+</div>
+
+<div class="card">
+  <img src="produit18.gif" alt="Fille 18">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 18</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+Il est allongé sur le dos sur le lit.
+2 pas:
+Il plie ses genoux et les rapproche de sa poitrine.
+3 pas:
+Elle s'assied sur son pénis et commence à bouger.
+  </p>
+
+  <p class="price">AMAZONE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="produit19.gif" alt="Fille 19">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 19</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+Il s'allonge sur le dos. Ses jambes sont droites, écartées sur le côté.
+2 pas:
+La femme s'allonge sur son partenaire, dos à lui.
+3 pas:
+Ses jambes sont pliées aux genoux et écartées pour qu'elle puisse sentir les jambes de l'homme entre ses cuisses.
+4 pas:
+Il peut stimuler l'entrejambe de la femme d'une main et jouer avec ses seins de l'autre.
+  </p>
+
+  <p class="price">ACROBATE</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+<div class="card">
+  <img src="produit20.gif" alt="Fille 20">
+
+  <!-- Bouton sous l'image -->
+  <button class="more-btn" onclick="toggleCard(this)">
+    Voir détails ▼
+  </button>
+
+  <h3>POSITION 20</h3>
+
+  <!-- Description cachée -->
+  <p class="description hidden">
+Technique
+1 pas:
+Il repose son dos sur le lit, en posant ses pieds sur le sol.
+2 pas:
+Elle passe ses jambes autour de sa taille et se penche en avant pour faire face à ses jambes.
+3 pas:
+Il la soutient par derrière pour maintenir la pose et commence à la pénétrer plus profondément.
+  </p>
+
+  <p class="price">AVION</p>
+
+  <a href="https://wa.me/22893875723" class="buy">Passer demander conseil</a>
+</div>
+
+  </div>
+
+</div>
+
+
+
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/22893875723" class="whatsapp">💬</a>
+
+<footer style="text-align:center; padding:20px; font-size:14px;background: black;color: white;">
+  <a href="mentions-legales.html">Mentions légales</a> |
+  <a href="cgu.html">Conditions d'utilisation</a> |
+  <a href="confidentialite.html">Politique de confidentialité</a>
+</footer>
+
+<script>
+
+
+
+/*PRODUITS */
+
+function toggleCard(btn) {
+  const card = btn.parentElement;
+  const desc = card.querySelector(".description");
+
+  desc.classList.toggle("hidden");
+
+  // changer le texte du bouton
+  if (desc.classList.contains("hidden")) {
+    btn.innerHTML = "Voir détails ▼";
+  } else {
+    btn.innerHTML = "Masquer détails ▲";
+  }
+}
+
+
+/* ANIMATION SCROLL */
+let elements = document.querySelectorAll('.fade-in');
+
+window.addEventListener('scroll', ()=>{
+  elements.forEach(el=>{
+    let pos = el.getBoundingClientRect().top;
+    if(pos < window.innerHeight - 50){
+      el.classList.add('show');
+    }
+  });
+});
+
+
+
+/* ===== PUB DATA ===== */
+const ads = [
+  {
+    img: "pub1.jpg",
+    video: "pub1.webm",
+    link: "https://wa.me/22893875723"
+  },
+  {
+    img: "pub2.jpg",
+    video: "pub2.webm",
+    link: "https://wa.me/22893875723"
+  },
+  {
+    img: "pub3.jpg",
+    video: "pub3.webm",
+    link: "https://wa.me/22893875723"
+  }
+];
+
+let currentAd = 0;
+
+/* AFFICHER PUB */
+function showAd() {
+
+  if (currentAd >= ads.length) {
+    return; // STOP après la dernière pub
+  }
+
+  let ad = ads[currentAd];
+
+  document.getElementById("popupAd").style.display = "flex";
+
+  document.getElementById("adImage").src = ad.img;
+
+  let video = document.getElementById("adVideo");
+  let source = document.getElementById("adSource");
+
+  source.src = ad.video;
+  video.load();
+
+  document.getElementById("adBtn").href = ad.link;
+
+  currentAd++; // passe à la suivante
+}
+
+/* FERMER PUB */
+function closeAd() {
+  document.getElementById("popupAd").style.display = "none";
+}
+
+let adInterval = setInterval(() => {
+  if (currentAd >= ads.length) {
+    clearInterval(adInterval); // STOP total
+    return;
+  }
+  showAd();
+}, 30000);
+
+</script>
+
+</body>
+</html>

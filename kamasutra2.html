@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAMASUTRA</title>
+
+<style>
+
+/* ========================= */
+/* THEME ROSE FEMININ */
+/* ========================= */
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:
+    linear-gradient(rgba(255,192,203,0.08),rgba(255,182,193,0.08)),
+    #fff5f7;
+    color:#4a0033;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+nav{
+    background:linear-gradient(to right,#ffb6c1,#ffc0cb);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    flex-wrap:wrap;
+    box-shadow:0 4px 20px rgba(255,105,180,0.15);
+    border-bottom:2px solid #ff69b4;
+}
+
+.logo img{
+    width:220px;
+}
+
+.logos img{
+    width:120px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    padding:0;
+}
+
+nav ul li{
+    margin:0 10px;
+}
+
+nav ul li a{
+    color:#c2185b;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#ff1493;
+}
+
+nav a.active{
+    border-bottom:3px solid #ff1493;
+    padding-bottom:5px;
+}
+
+/* ========================= */
+/* TITRE */
+/* ========================= */
+
+.title{
+    text-align:center;
+    padding:50px 20px 30px;
+}
+
+.title h1{
+    color:#ff1493;
+    font-size:50px;
+    margin-bottom:15px;
+    text-shadow:0 0 15px rgba(255,20,147,0.2);
+}
+
+.title p{
+    color:#7a4b61;
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* ========================= */
+/* PRODUITS */
+/* ========================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding:25px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 25px rgba(255,105,180,0.12);
+    transition:0.4s;
+    border:1px solid rgba(255,182,193,0.5);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 35px rgba(255,20,147,0.25);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h2{
+    color:#e91e63;
+    margin-top:0;
+    font-size:24px;
+}
+
+.card-content p{
+    color:#6b4d5f;
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* ========================= */
+/* BOUTON WHATSAPP */
+/* ========================= */
+
+.btn-whatsapp{
+    display:block;
+    margin-top:18px;
+    background:linear-gradient(to right,#ff69b4,#ff1493);
+    color:white;
+    text-align:center;
+    padding:13px;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 5px 20px rgba(255,20,147,0.2);
+}
+
+.btn-whatsapp:hover{
+    transform:scale(1.03);
+    background:linear-gradient(to right,#ff1493,#e91e63);
+}
+
+/* ========================= */
+/* WHATSAPP FLOAT */
+/* ========================= */
+
+.whatsapp-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#ff1493;
+    color:white;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:30px;
+    box-shadow:0 0 20px rgba(255,20,147,0.4);
+    z-index:999;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.1);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    background:#ffe4ec;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+    border-top:2px solid #ffb6c1;
+}
+
+footer a{
+    color:#c2185b;
+    text-decoration:none;
+    margin:0 10px;
+    font-weight:bold;
+}
+
+footer a:hover{
+    color:#ff1493;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav ul{
+        flex-direction:column;
+    }
+
+    nav ul li{
+        margin:10px 0;
+    }
+
+    .logo img{
+        width:180px;
+    }
+
+    .title h1{
+        font-size:35px;
+    }
+
+    .title p{
+        font-size:16px;
+    }
+
+    .card img{
+        height:220px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="logo">
+        <img src="logo3.png">
+    </div>
+
+    <ul>
+        <li><a href="accueil2.html">ACCUEIL</a></li>
+       
+        <li><a href="kamasutra2.html" class="active">KAMASUTRA</a></li>
+    </ul>
+     <div class="logos">
+        <img src="logo2.png">
+    </div>
+
+</nav>
+
+<!-- TITRE -->
+<section class="title">
+    <h1>KAMASUTRA 🔥</h1>
+    <p>Découvrez plusieurs styles et techniques pour pimenter vos moments.</p>
+</section>
+
+<!-- PRODUITS -->
+<section class="products">
+
+    <!-- CARD 1 -->
+    <div class="card">
+        <img src="kama1.gif">
+        <div class="card-content">
+            <h2>POSITION ÉNERGIE</h2>
+            <p>
+                Une position intense pour augmenter les sensations et renforcer la connexion.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="POSITION ÉNERGIE">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+        <img src="kama2.gif">
+        <div class="card-content">
+            <h2>PASSION ROUGE</h2>
+            <p>
+                Une technique idéale pour les couples qui aiment la proximité et la tendresse.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="PASSION ROUGE">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+        <img src="kama3.gif">
+        <div class="card-content">
+            <h2>POSITION FEU</h2>
+            <p>
+                Une posture dynamique qui permet une expérience plus intense et plus profonde.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="POSITION FEU">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+        <img src="kama4.gif">
+        <div class="card-content">
+            <h2>DOUBLE PLAISIR</h2>
+            <p>
+                Une position parfaite pour partager des sensations équilibrées et harmonieuses.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="DOUBLE PLAISIR">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card">
+        <img src="kama5.gif">
+        <div class="card-content">
+            <h2>MONTAGNE DOUCE</h2>
+            <p>
+                Favorise la proximité physique et émotionnelle tout en restant confortable.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="MONTAGNE DOUCE">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="card">
+        <img src="kama6.gif">
+        <div class="card-content">
+            <h2>EXTASE NOCTURNE</h2>
+            <p>
+                Une technique séduisante pour des moments plus excitants et plus spontanés.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="EXTASE NOCTURNE">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div class="card">
+        <img src="kama7.gif">
+        <div class="card-content">
+            <h2>UNION PARFAITE</h2>
+            <p>
+                Une posture élégante qui favorise le rythme, l’équilibre et le confort.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="UNION PARFAITE">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 8 -->
+    <div class="card">
+        <img src="kama8.gif">
+        <div class="card-content">
+            <h2>SENSATION MAX</h2>
+            <p>
+                Une expérience originale qui apporte plus de variété et de complicité.
+            </p>
+
+            <a href="#" class="btn-whatsapp" data-product="SENSATION MAX">
+                Contactez-nous
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD 9 -->
+<div class="card">
+    <img src="kama9.gif">
+    <div class="card-content">
+        <h2>NUIT INTENSE</h2>
+        <p>
+            Une position captivante qui favorise la passion et la complicité.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="NUIT INTENSE">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 10 -->
+<div class="card">
+    <img src="kama10.gif">
+    <div class="card-content">
+        <h2>PLAISIR SECRET</h2>
+        <p>
+            Idéale pour découvrir de nouvelles sensations dans une ambiance relaxante.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="PLAISIR SECRET">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 11 -->
+<div class="card">
+    <img src="kama11.gif">
+    <div class="card-content">
+        <h2>FUSION PARFAITE</h2>
+        <p>
+            Une posture élégante qui améliore l’équilibre et l’intimité du couple.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="FUSION PARFAITE">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 12 -->
+<div class="card">
+    <img src="kama12.gif">
+    <div class="card-content">
+        <h2>VIBRATION DOUCE</h2>
+        <p>
+            Une expérience tendre et confortable pour renforcer la connexion.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="VIBRATION DOUCE">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 13 -->
+<div class="card">
+    <img src="kama13.gif">
+    <div class="card-content">
+        <h2>PASSION NOIRE</h2>
+        <p>
+            Une technique séduisante qui apporte intensité et spontanéité.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="PASSION NOIRE">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 14 -->
+<div class="card">
+    <img src="kama14.gif">
+    <div class="card-content">
+        <h2>HARMONIE FEU</h2>
+        <p>
+            Une posture dynamique qui mélange douceur, rythme et sensations fortes.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="HARMONIE FEU">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 15 -->
+<div class="card">
+    <img src="kama15.gif">
+    <div class="card-content">
+        <h2>ÉCLAT ROUGE</h2>
+        <p>
+            Favorise des mouvements fluides et une meilleure synchronisation.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="ÉCLAT ROUGE">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 16 -->
+<div class="card">
+    <img src="kama16.gif">
+    <div class="card-content">
+        <h2>TENTATION MAX</h2>
+        <p>
+            Une position originale pour explorer de nouvelles expériences à deux.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="TENTATION MAX">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 17 -->
+<div class="card">
+    <img src="kama17.gif">
+    <div class="card-content">
+        <h2>LUNE ROUGE</h2>
+        <p>
+            Une posture confortable qui combine proximité et sensations intenses.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="LUNE ROUGE">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 18 -->
+<div class="card">
+    <img src="kama18.gif">
+    <div class="card-content">
+        <h2>RYTHME FATAL</h2>
+        <p>
+            Une technique parfaite pour varier les mouvements et garder l’excitation.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="RYTHME FATAL">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 19 -->
+<div class="card">
+    <img src="kama19.gif">
+    <div class="card-content">
+        <h2>UNIVERS SENSUEL</h2>
+        <p>
+            Une expérience immersive qui favorise la complicité et le confort.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="UNIVERS SENSUEL">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+<!-- CARD 20 -->
+<div class="card">
+    <img src="kama20.gif">
+    <div class="card-content">
+        <h2>INSTANT EXTRÊME</h2>
+        <p>
+            Une posture énergique qui apporte variété, passion et intensité.
+        </p>
+
+        <a href="#" class="btn-whatsapp" data-product="INSTANT EXTRÊME">
+            Contactez-nous
+        </a>
+    </div>
+</div>
+
+</section>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/22893875723" class="whatsapp-float">
+💬
+</a>
+
+<!-- FOOTER -->
+<footer>
+    <a href="mentions-legales.html">Mentions légales</a> |
+    <a href="cgu.html">Conditions d'utilisation</a> |
+    <a href="confidentialite.html">Politique de confidentialité</a>
+</footer>
+
+<script>
+
+/* BOUTONS WHATSAPP */
+const buttons = document.querySelectorAll(".btn-whatsapp");
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        let product = this.getAttribute("data-product");
+
+        let message = "Bonjour, je veux avoir plus d'informations sur : " + product;
+
+        let whatsappURL = "https://wa.me/22893875723?text=" + encodeURIComponent(message);
+
+        window.open(whatsappURL, "_blank");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
